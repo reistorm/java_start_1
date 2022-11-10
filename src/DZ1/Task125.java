@@ -22,3 +22,28 @@ public class Task125 {
     }
 }
 }
+
+// решение преподавателя
+class Solution {
+    public boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+        
+        while(left < right) {
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) { // !Character.isLetterOrDigit значит пока символ не буква или цифра. Будем двигать 
+                // левый указатель вправо пока не выполнится условие 
+                left += 1;
+            }
+            while ( left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+                rigth -= 1;
+            }
+            char leftChar = Character.toLowerCase(s.charAt(left)); // перевод символа в нижний регистр
+            char rightChar = Character.toLowerCase(s.charAt(right));
+            if (leftChar != rightChar) {
+                return false;
+            }
+            left += 1;
+            right -= 1;
+        }
+        return true;
+    }
