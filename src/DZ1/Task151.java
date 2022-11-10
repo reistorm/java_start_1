@@ -31,3 +31,28 @@ public class Task151 {
     }
 }
 
+
+// решение преподавателя
+class Solution {
+    public String reverseWords(String s) {
+        StringBuilder sb = new StringBuilder();
+        int end = s.length() - 1;
+        while (end >= 0) {
+            if (s.charAt(end) == ' ') { //ищем последний символ слова
+                end -= 1;
+                continue;
+            }
+            int start = end - 1;
+            while (start >= 0 && s.charAt(start) != ' ') { // ищем первый символ слова
+                start -= 1;
+            }
+            sb.append(" "); // добавляю пробел
+            sb.append(s.substring(start + 1, end + 1)); // добавляем слово в строку, которое я нашла
+            end = start - 1; // убавляем слово с концом
+        }
+        if (sb.length() > 0) { // если строка пустая, то удалим лишний пробел
+            sb.deleteCharAt(0);
+        }
+        return sb.toString();
+    }
+}
